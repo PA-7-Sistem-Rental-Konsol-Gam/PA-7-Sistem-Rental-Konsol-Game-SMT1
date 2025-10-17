@@ -15,9 +15,7 @@ USERS_FILE = os.path.join(DATA_DIR, "Data_Pengguna.json")
 PRODUCTS_FILE = os.path.join(DATA_DIR, "List_Konsol.json")
 TRANSACTIONS_FILE = os.path.join(DATA_DIR, "Data_Transaksi.json")
 
-# -----------------------------
 # Utilitas: load/save file ke JSON
-# -----------------------------
 def load_json(path):
     if not os.path.exists(path):
         return []
@@ -31,9 +29,8 @@ def save_json(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-# -----------------------------
+
 # ID generator, pencari id
-# -----------------------------
 def next_id(prefix, existing_ids):
     # Format: PREFIX-XXXX
     num = 1
@@ -65,7 +62,7 @@ def find_transaction(transactions, tid):
 # register & login
 # -----------------------------
 def register(users):
-    print("\n=== Registrasi Akun Baru ===")
+    print("=== Registrasi Akun Baru ===")
     username = input("Username baru: ").strip()
     if not username:
         print("Username tidak boleh kosong.")
@@ -95,7 +92,7 @@ def register(users):
     return new_user
 
 def login(users):
-    print("\n=== Log In ===")
+    print("=== Log In ===")
     username = input("Username: ").strip()
     password = pwinput.pwinput("Password: ").strip()
 
@@ -106,9 +103,7 @@ def login(users):
     print("Login gagal. Periksa username/password.")
     return None
 
-# -----------------------------
 # Tabel tampilan pretty table
-# -----------------------------
 def show_products_table(products):
     table = PrettyTable()
     table.field_names = ["ID", "Nama", "Brand", "Tarif/Perjam", "Stok"]
@@ -133,11 +128,9 @@ def show_transactions_table(transactions):
         ])
     print(table)
 
-# -----------------------------
 # Admin Bagian CRUD 
-# -----------------------------
 def admin_create_product(products):
-    print("\n=== Tambah Produk ===")
+    print("=== Tambah Produk ===")
     name = input("Nama produk: ").strip()
     brand = input("Brand: ").strip()
     try:
@@ -158,7 +151,7 @@ def admin_create_product(products):
     print(f"Produk {pid} berhasil ditambahkan.")
 
 def admin_update_product(products):
-    print("\n=== Ubah Produk ===")
+    print("=== Ubah Produk ===")
     pid = input("Masukkan ID produk: ").strip()
     p = find_product(products, pid)
     if not p:
@@ -183,7 +176,7 @@ def admin_update_product(products):
     print(f"Produk {pid} berhasil diperbarui.")
 
 def admin_delete_product(products):
-    print("\n=== Hapus Produk ===")
+    print("=== Hapus Produk ===")
     pid = input("Masukkan ID produk: ").strip()
     p = find_product(products, pid)
     if not p:
@@ -194,18 +187,17 @@ def admin_delete_product(products):
     print(f"Produk {pid} dihapus.")
 
 def admin_list_products(products):
-    print("\n=== Daftar Produk ===")
+    print("=== Daftar Produk ===")
     show_products_table(products)
 
-# -----------------------------
+
 # Admin: CRUD User (opsional, contoh)
-# -----------------------------
 def admin_list_users(users):
-    print("\n=== Daftar Pengguna ===")
+    print("=== Daftar Pengguna ===")
     show_users_table(users)
 
 def admin_update_user(users):
-    print("\n=== Ubah Pengguna ===")
+    print("=== Ubah Pengguna ===")
     uid = input("Masukkan ID user: ").strip()
     user = next((u for u in users if u["id"] == uid), None)
     if not user:
@@ -226,7 +218,7 @@ def admin_update_user(users):
     print(f"User {uid} diperbarui.")
 
 def admin_delete_user(users, transactions):
-    print("\n=== Hapus Pengguna ===")
+    print("=== Hapus Pengguna ===")
     uid = input("Masukkan ID user: ").strip()
     user = next((u for u in users if u["id"] == uid), None)
     if not user:
@@ -244,11 +236,10 @@ def admin_delete_user(users, transactions):
     save_json(TRANSACTIONS_FILE, transactions)
     print(f"User {uid} dihapus.")
 
-# -----------------------------
+
 # User: fitur saldo dan transaksi
-# -----------------------------
 def user_topup_balance(current_user, users):
-    print("\n=== Top Up Saldo E-money ===")
+    print("=== Top Up Saldo E-money ===")
     try:
         amount = int(input("Nominal top up: ").strip())
         if amount <= 0:
@@ -262,7 +253,7 @@ def user_topup_balance(current_user, users):
     print(f"Top up berhasil. Saldo sekarang: {current_user['balance']}")
 
 def user_rent_product(current_user, users, products, transactions):
-    print("\n=== Sewa Produk ===")
+    print("=== Sewa Produk ===")
     show_products_table(products)
     pid = input("Masukkan ID produk: ").strip()
     product = find_product(products, pid)
@@ -307,7 +298,7 @@ def user_rent_product(current_user, users, products, transactions):
     transactions.append(trx)
     save_json(TRANSACTIONS_FILE, transactions)
 
-    print("\n=== Invoice ===")
+    print("== Invoice ===")
     table = PrettyTable()
     table.field_names = ["Invoice ID", "User", "Produk", "Hari", "Tarif/perjam", "Total", "Metode", "Tanggal"]
     table.add_row([
@@ -318,19 +309,18 @@ def user_rent_product(current_user, users, products, transactions):
     print("Terima kasih! Sewa berhasil.")
 
 def user_view_transactions(current_user, transactions):
-    print("\n=== Riwayat Transaksi Saya ===")
+    print("=== Riwayat Transaksi Saya ===")
     my_trx = [t for t in transactions if t["user_id"] == current_user["id"]]
     if not my_trx:
         print("Belum ada transaksi.")
         return
     show_transactions_table(my_trx)
 
-# -----------------------------
-# Menu: Admin & User
-# -----------------------------
+
+# Menu: Admin dan User
 def admin_menu(current_user, users, products, transactions):
     while True:
-        print("\n=== Menu Admin ===")
+        print("=== Menu Admin ===")
         print("1. Lihat semua produk")
         print("2. Tambah produk")
         print("3. Ubah produk")
@@ -356,7 +346,7 @@ def admin_menu(current_user, users, products, transactions):
         elif choice == "7":
             admin_delete_user(users, transactions)
         elif choice == "8":
-            print("\n=== Semua Transaksi ===")
+            print("=== Semua Transaksi ===")
             show_transactions_table(transactions)
         elif choice == "9":
             print("Log out...")
@@ -366,7 +356,7 @@ def admin_menu(current_user, users, products, transactions):
 
 def user_menu(current_user, users, products, transactions):
     while True:
-        print("\n=== Menu User ===")
+        print("=== Menu User ===")
         print(f"Saldo: {current_user['balance']}")
         print("1. Lihat produk")
         print("2. Top up saldo")
@@ -388,9 +378,7 @@ def user_menu(current_user, users, products, transactions):
         else:
             print("Pilihan tidak valid.")
 
-# -----------------------------
-# Entry point: main loop
-# -----------------------------
+# Looping
 def ensure_data_dir():
     if not os.path.exists(DATA_DIR):
         os.makedirs(DATA_DIR)
@@ -406,7 +394,7 @@ def main():
     transactions = load_json(TRANSACTIONS_FILE)
 
     while True:
-        print("\n=== Sistem Rental Konsol Game ===")
+        print("=== Sistem Rental Konsol Game ===")
         print("1. Log in")
         print("2. Registrasi")
         print("3. Keluar")

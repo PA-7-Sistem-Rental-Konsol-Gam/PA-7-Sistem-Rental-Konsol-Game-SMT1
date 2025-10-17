@@ -3,35 +3,35 @@
     "id": "P-0001",
     "name": "PlayStation 5",
     "brand": "Sony",
-    "perjam": 150000,
-    "stock": 3
+    "perjam": 15000,
+    "stock": 2
   },
   {
     "id": "P-0002",
     "name": "Xbox Series X",
     "brand": "Microsoft",
-    "perjam": 140000,
+    "perjam": 14000,
     "stock": 2
   },
   {
     "id": "P-0003",
     "name": "Nintendo Switch OLED",
     "brand": "Nintendo",
-    "perjam": 120000,
+    "perjam": 12000,
     "stock": 4
   },
   {
     "id": "P-0004",
     "name": "PlayStation 4 Pro",
     "brand": "Sony",
-    "perjam": 90000,
+    "perjam": 9000,
     "stock": 5
   },
   {
     "id": "P-0005",
     "name": "Xbox One S",
     "brand": "Microsoft",
-    "perjam": 80000,
+    "perjam": 8000,
     "stock": 5
   }
 ]
