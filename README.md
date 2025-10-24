@@ -8,4 +8,9 @@ Sistem Rental Konsol Game
  2. Arizky Saputra (2509116088)
  3. Otniel Putra Wardana (2509116081)
 
-# Flowchart
+# Flowchart Program
+<h2>1. Flowchart Menu Utama</h2>
+<img width="1191" height="891" alt="FLOWCHART PA - Main Menu drawio" src="https://github.com/user-attachments/assets/3fed8be4-89e6-4876-abda-40496f1f10eb" />
+
+
+
