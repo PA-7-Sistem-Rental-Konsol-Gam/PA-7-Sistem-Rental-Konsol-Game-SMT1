@@ -45,7 +45,7 @@ def find_user(users, username):
         if u["username"] == username:
             return u
     return None
-
+1
 def find_product(products, pid):
     for p in products:
         if p["id"] == pid:
@@ -136,6 +136,12 @@ def admin_create_product(products):
     try:
         perjam = int(input("Tarif perjam (angka): ").strip())
         stock = int(input("Stok (angka): ").strip())
+        if perjam < 1000 or perjam > 100000:
+            print("Tarif perjam harus antara 1.000 dan 100.000.")
+            return
+        if stock < 1 or stock > 100:
+            print("Stok harus antara 1 dan 100.")
+            return
     except ValueError:
         print("Tarif/Stok harus angka.")
         return
@@ -151,18 +157,43 @@ def admin_create_product(products):
     print(f"Produk {pid} berhasil ditambahkan.")
 
 def admin_update_product(products):
-    print("=== Ubah Produk ===")
-    pid = input("Masukkan ID produk: ").strip()
-    p = find_product(products, pid)
-    if not p:
-        print("Produk tidak ditemukan.")
-        return
-    print("Kosongkan input jika tidak ingin mengubah field tertentu.")
-    name = input(f"Nama ({p['name']}): ").strip()
-    brand = input(f"Brand ({p['brand']}): ").strip()
-    perjam_str = input(f"Tarif/Perjam ({p['perjam']}): ").strip()
-    stock_str = input(f"Stok ({p['stock']}): ").strip()
-
+    show_products_table(products)
+    try:
+        print("=== Ubah Produk ===")
+        pid = input("Masukkan ID produk: ").strip()
+        p = find_product(products, pid)
+        if not p:
+            print("Produk tidak ditemukan.")
+            return
+        print("Kosongkan input jika tidak ingin mengubah field tertentu.")
+        name = input(f"Nama ({p['name']}): ").strip()
+        brand = input(f"Brand ({p['brand']}): ").strip()
+        perjam_str = input(f"Tarif/Perjam ({p['perjam']}): ").strip()
+        if perjam_str:
+            try:
+                perjam = int(perjam_str)
+                if perjam < 1000 or perjam > 100000:
+                    print("Tarif perjam harus antara 1.000 dan 100.000.")
+                    return
+                p["perjam"] = perjam
+            except ValueError:
+                print("Tarif harus berupa angka.")
+                return
+        stock_str = input(f"Stok ({p['stock']}): ").strip()
+        if stock_str:
+            try:
+                stock = int(stock_str)
+                if stock < 1 or stock > 100:
+                    print("Stok harus antara 1 dan 100.")
+                    return
+                p["stock"] = stock
+            except ValueError:
+                print("Stok harus berupa angka.")
+                return
+        print("Produk berhasil diperbarui!")
+    except KeyboardInterrupt:
+        return admin_update_product(products)
+    
     if name: p["name"] = name
     if brand: p["brand"] = brand
     if perjam_str:
@@ -176,6 +207,7 @@ def admin_update_product(products):
     print(f"Produk {pid} berhasil diperbarui.")
 
 def admin_delete_product(products):
+    show_products_table(products)
     print("=== Hapus Produk ===")
     pid = input("Masukkan ID produk: ").strip()
     p = find_product(products, pid)
@@ -197,6 +229,7 @@ def admin_list_users(users):
     show_users_table(users)
 
 def admin_update_user(users):
+    show_users_table(users)
     print("=== Ubah Pengguna ===")
     uid = input("Masukkan ID user: ").strip()
     user = next((u for u in users if u["id"] == uid), None)
@@ -218,6 +251,7 @@ def admin_update_user(users):
     print(f"User {uid} diperbarui.")
 
 def admin_delete_user(users, transactions):
+    show_users_table(users)
     print("=== Hapus Pengguna ===")
     uid = input("Masukkan ID user: ").strip()
     user = next((u for u in users if u["id"] == uid), None)
@@ -245,6 +279,10 @@ def user_topup_balance(current_user, users):
         if amount <= 0:
             print("Nominal harus lebih dari 0.")
             return
+        if amount > 1_000_000_000:
+            print("Nominal maksimal 1 miliar.")
+            return
+
     except ValueError:
         print("Nominal harus angka.")
         return
@@ -264,13 +302,17 @@ def user_rent_product(current_user, users, products, transactions):
         print("Stok habis.")
         return
     try:
-        perjam = int(input("Jumlah sewa perjam: ").strip())
+        perjam = int(input("Jumlah sewa per jam: ").strip())
         if perjam <= 0:
-            print("perjam harus lebih dari 0.")
+            print("Per jam harus lebih dari 0.")
+            return
+        if perjam > 168:
+            print("Maksimal 168 jam untuk penyewaan.")
             return
     except ValueError:
-        print("sewa perjam harus angka.")
+        print("Sewa per jam harus angka.")
         return
+
 
     total = product["perjam"] * perjam
     print(f"Total biaya: {total}")
@@ -319,64 +361,79 @@ def user_view_transactions(current_user, transactions):
 
 # Menu: Admin dan User
 def admin_menu(current_user, users, products, transactions):
-    while True:
-        print("=== Menu Admin ===")
-        print("1. Lihat semua produk")
-        print("2. Tambah produk")
-        print("3. Ubah produk")
-        print("4. Hapus produk")
-        print("5. Lihat semua pengguna")
-        print("6. Ubah pengguna")
-        print("7. Hapus pengguna")
-        print("8. Lihat semua transaksi")
-        print("9. Log out")
-        choice = input("Pilih: ").strip()
-        if choice == "1":
-            admin_list_products(products)
-        elif choice == "2":
-            admin_create_product(products)
-        elif choice == "3":
-            admin_update_product(products)
-        elif choice == "4":
-            admin_delete_product(products)
-        elif choice == "5":
-            admin_list_users(users)
-        elif choice == "6":
-            admin_update_user(users)
-        elif choice == "7":
-            admin_delete_user(users, transactions)
-        elif choice == "8":
-            print("=== Semua Transaksi ===")
-            show_transactions_table(transactions)
-        elif choice == "9":
-            print("Log out...")
-            break
-        else:
-            print("Pilihan tidak valid.")
+    try:
+        print("Gabisa Keluar")
+        while True:
+            print("=== Menu Admin ===")
+            print("1. Lihat semua produk")
+            print("2. Tambah produk")
+            print("3. Ubah produk")
+            print("4. Hapus produk")
+            print("5. Lihat semua pengguna")
+            print("6. Ubah pengguna")
+            print("7. Hapus pengguna")
+            print("8. Lihat semua transaksi")
+            print("9. Log out")
+            choice = input("Pilih: ").strip()
+            if choice == "1":
+                admin_list_products(products)
+            elif choice == "2":
+                admin_create_product(products)
+            elif choice == "3":
+                admin_update_product(products)
+            elif choice == "4":
+                admin_delete_product(products)
+            elif choice == "5":
+                admin_list_users(users)
+            elif choice == "6":
+                admin_update_user(users)
+            elif choice == "7":
+                admin_delete_user(users, transactions)
+            elif choice == "8":
+                print("=== Semua Transaksi ===")
+                show_transactions_table(transactions)
+            elif choice == "9":
+                print("Log out...")
+                break
+            else:
+                print("Pilihan tidak valid.")
+    except KeyboardInterrupt:
+        print("Tidak Bisa keluar")
+        return admin_menu(current_user, users, products, transactions)
+    except EOFError:
+        print("\nTidak bisa keluar dengan Ctrl+Z")
+        return admin_menu(current_user, users, products, transactions)
 
 def user_menu(current_user, users, products, transactions):
-    while True:
-        print("=== Menu User ===")
-        print(f"Saldo: {current_user['balance']}")
-        print("1. Lihat produk")
-        print("2. Top up saldo")
-        print("3. Sewa produk (E-money)")
-        print("4. Lihat transaksi saya")
-        print("5. Log out")
-        choice = input("Pilih: ").strip()
-        if choice == "1":
-            show_products_table(products)
-        elif choice == "2":
-            user_topup_balance(current_user, users)
-        elif choice == "3":
-            user_rent_product(current_user, users, products, transactions)
-        elif choice == "4":
-            user_view_transactions(current_user, transactions)
-        elif choice == "5":
-            print("Log out...")
-            break
-        else:
-            print("Pilihan tidak valid.")
+    try: 
+        while True:
+            print("=== Menu User ===")
+            print(f"Saldo: {current_user['balance']}")
+            print("1. Lihat produk")
+            print("2. Top up saldo")
+            print("3. Sewa produk (E-money)")
+            print("4. Lihat transaksi saya")
+            print("5. Log out")
+            choice = input("Pilih: ").strip()
+            if choice == "1":
+                show_products_table(products)
+            elif choice == "2":
+                user_topup_balance(current_user, users)
+            elif choice == "3":
+                user_rent_product(current_user, users, products, transactions)
+            elif choice == "4":
+                user_view_transactions(current_user, transactions)
+            elif choice == "5":
+                print("Log out...")
+                break
+            else:
+                print("Pilihan tidak valid.")
+    except KeyboardInterrupt:
+        print("Gabisa")
+        return user_menu(current_user, users, products, transactions)
+    except EOFError:
+        print("\nTidak bisa keluar dengan Ctrl+Z")
+        return user_menu(current_user, users, products, transactions)
 
 # Looping
 def ensure_data_dir():
@@ -392,30 +449,36 @@ def main():
     users = load_json(USERS_FILE)
     products = load_json(PRODUCTS_FILE)
     transactions = load_json(TRANSACTIONS_FILE)
+    try:
+        while True:
+            print("=== Sistem Rental Konsol Game ===")
+            print("1. Log in")
+            print("2. Registrasi")
+            print("3. Keluar")
+            choice = input("Pilih: ").strip()
 
-    while True:
-        print("=== Sistem Rental Konsol Game ===")
-        print("1. Log in")
-        print("2. Registrasi")
-        print("3. Keluar")
-        choice = input("Pilih: ").strip()
-
-        if choice == "1":
-            user = login(users)
-            if user:
-                if user["role"] == "admin":
-                    admin_menu(user, users, products, transactions)
-                else:
-                    user_menu(user, users, products, transactions)
-        elif choice == "2":
-            new_user = register(users)
-            if new_user:
-                print("Silakan log in untuk mulai bertransaksi.")
-        elif choice == "3":
-            print("Sampai jumpa!")
-            break
-        else:
-            print("Pilihan tidak valid.")
+            if choice == "1":
+                user = login(users)
+                if user:
+                    if user["role"] == "admin":
+                        admin_menu(user, users, products, transactions)
+                    else:
+                        user_menu(user, users, products, transactions)
+            elif choice == "2":
+                new_user = register(users)
+                if new_user:
+                    print("Silakan log in untuk mulai bertransaksi.")
+            elif choice == "3":
+                print("Sampai jumpa!")
+                break
+            else:
+                print("Pilihan tidak valid.")
+    except KeyboardInterrupt:
+        print("Tidak Bisa keluar")
+        return main()
+    except EOFError:
+        print("\nTidak bisa keluar dengan Ctrl+Z")
+        return main()
 
 if __name__ == "__main__":
     main()
