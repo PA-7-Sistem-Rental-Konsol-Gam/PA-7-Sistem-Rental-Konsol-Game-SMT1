@@ -301,6 +301,7 @@ def user_rent_product(current_user, users, products, transactions):
     if product["stock"] <= 0:
         print("Stok habis.")
         return
+
     try:
         perjam = int(input("Jumlah sewa per jam: ").strip())
         if perjam <= 0:
@@ -313,12 +314,35 @@ def user_rent_product(current_user, users, products, transactions):
         print("Sewa per jam harus angka.")
         return
 
-
     total = product["perjam"] * perjam
     print(f"Total biaya: {total}")
     if current_user["balance"] < total:
         print("Saldo tidak cukup. Silakan top up terlebih dahulu.")
         return
+
+    # Konfirmasi pertama
+    confirm1 = input("Apakah Anda yakin ingin menyewa produk ini? (ya/tidak): ").strip().lower()
+    if confirm1 != "ya":
+        print("Penyewaan dibatalkan.")
+        return
+
+    # Konfirmasi kedua
+    confirm2 = input("Konfirmasi sekali lagi untuk menyewa produk ini. Lanjutkan? (ya/tidak): ").strip().lower()
+    if confirm2 != "ya":
+        print("Penyewaan dibatalkan.")
+        return
+
+    # Jika lolos dua kali konfirmasi, proses transaksi
+    current_user["balance"] -= total
+    product["stock"] -= 1
+    transactions.append({
+        "user": current_user["username"],
+        "product": product["name"],
+        "hours": perjam,
+        "total": total
+    })
+    print("Penyewaan berhasil dilakukan!")
+
 
     # Potong saldo, kurangi stok, simpan transaksi
     current_user["balance"] -= total
