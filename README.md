@@ -78,9 +78,23 @@ Sistem akan menampilkan pesan "Selamat tinggal" dan kemudian akan mengakhiri sem
 <img width="991" height="2266" alt="Flowchart Menu Admin drawio" src="https://github.com/user-attachments/assets/14743863-1b26-4359-b499-1fb32c79c3e5" /> <br><br>
 
 <p>Bagian ini menjelaskan bagaimana alur program setelah pengguna melakukan Log in dan terverifikasi sebagai Admin. Sistem akan menampilkan pilihan menu dan hak akses yang dimiliki oleh Admin.<br>
+Berbagai pilihan menu yang dimiliki oleh akun Admin yaitu : <br>
 
-<h2>C. Penjelasan Output</h2>
+<b>1. Lihat semua produk.</b> <br>
+<p>Pilihan ini akan mengarahkan sistem untuk mengambil data produk yang tersimpan pada database, yang kemudian akan ditampilkan dalam bentul Tabel kepada pengguna.</p>
+<img width="885" height="123" alt="Screenshot 2025-10-26 175359" src="https://github.com/user-attachments/assets/074e4144-0996-486d-9254-e7603918c695" /> <br><br>
 
-<img width="326" height="109" alt="image" src="https://github.com/user-attachments/assets/b97b4c71-a335-4e63-83d4-3f24269bdc0f" />
-</P> Menu Login dan Registrasi  <br>
+<b>2. Tambah Produk</b> <br> <br>
+<img width="875" height="104" alt="Screenshot 2025-10-26 175814" src="https://github.com/user-attachments/assets/7ac7aaea-655b-4617-9775-59dcef0bc752" /> <br>
+
+<p>Bagian ini digunakan untuk menambah produk baru kedalam database. Pengguna akan diminta memasukkan Nama Produk, Nama Brand, Tarif Rental(dalam satuan jam), dan Jumlah Stok yang ada. <br>
+Setelah itu sistem akan menyimpan data tersebut ke database, setelah berhasil maka program akan memberikan pesan "Produk berhasil ditambahkan", Lalu pengguna akan diarahkan kembali ke Menu Admin.
+
+ <b>3. Ubah Produk</b> <br> <br>
+<img width="875" height="92" alt="Screenshot 2025-10-26 214908" src="https://github.com/user-attachments/assets/a2785361-3cde-4ab7-87fb-f0f8d3225e7a" /> <br>
+
+<p>Pilihan Ubah Produk dapat digunakan untuk mengedit detail dari suatu produk rental yang tersedia. <br>
+Untuk mengubah suatu produk, pengguna akan terlebih dahulu diminta untuk memasukkan "ID Produk" yang terdapat dalam database. Jika ID Produk yang diinput tersebut sesuai dengan ID Produk yang ada dalam database, Selanjutnya pengguna dapat mengubah detail dari produk dengan memasukkan "Nama Produk, Nama Brand, Tarif rental, dan Stok produk" baru. <br>
+Setelah menginput data produk, selanjutnya program akan menyimpan perubahan data tersebut ke database dan akan menampilkan pesan "Perubahan berhasil disimpan" lalu kemudian akan mengarahkan tampilan pengguna ke menu utama User Admin 
+
 
