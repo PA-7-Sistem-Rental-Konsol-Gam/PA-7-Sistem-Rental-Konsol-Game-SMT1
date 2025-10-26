@@ -89,3 +89,12 @@ Berbagai pilihan menu yang dimiliki oleh akun Admin yaitu : <br>
 
 <p>Bagian ini digunakan untuk menambah produk baru kedalam database. Pengguna akan diminta memasukkan Nama Produk, Nama Brand, Tarif Rental(dalam satuan jam), dan Jumlah Stok yang ada. <br>
 Setelah itu sistem akan menyimpan data tersebut ke database, setelah berhasil maka program akan memberikan pesan "Produk berhasil ditambahkan", Lalu pengguna akan diarahkan kembali ke Menu Admin.
+
+ <b>3. Ubah Produk</b> <br> <br>
+<img width="875" height="92" alt="Screenshot 2025-10-26 214908" src="https://github.com/user-attachments/assets/a2785361-3cde-4ab7-87fb-f0f8d3225e7a" /> <br>
+
+<p>Pilihan Ubah Produk dapat digunakan untuk mengedit detail dari suatu produk rental yang tersedia. <br>
+Untuk mengubah suatu produk, pengguna akan terlebih dahulu diminta untuk memasukkan "ID Produk" yang terdapat dalam database. Jika ID Produk yang diinput tersebut sesuai dengan ID Produk yang ada dalam database, Selanjutnya pengguna dapat mengubah detail dari produk dengan memasukkan "Nama Produk, Nama Brand, Tarif rental, dan Stok produk" baru. <br>
+Setelah menginput data produk, selanjutnya program akan menyimpan perubahan data tersebut ke database dan akan menampilkan pesan "Perubahan berhasil disimpan" lalu kemudian akan mengarahkan tampilan pengguna ke menu utama User Admin 
+
+
