@@ -386,7 +386,7 @@ def user_view_transactions(current_user, transactions):
 # Menu: Admin dan User
 def admin_menu(current_user, users, products, transactions):
     try:
-        print("")
+        print("Gabisa Keluar")
         while True:
             print("=== Menu Admin ===")
             print("1. Lihat semua produk")
