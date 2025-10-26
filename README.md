@@ -11,7 +11,7 @@
 # Flowchart Program
 <h2>A. Flowchart Menu Utama</h2>
 <img width="1191" height="891" alt="Flowchart Menu Utama drawio" src="https://github.com/user-attachments/assets/de9df609-3338-4c64-8396-11f303ef28ae" />
-<p style="text-align: center;">Gambar 1. Flowchart Menu Utama</p>
+<p style="text-align: center;"></p>
 
 <br>
 Bagian Flowchart ini menjelaskan bagaimana alur program akan berjalan saat program mulai dijalankan.
@@ -45,7 +45,6 @@ Bagian-bagian program dijelaskan dalam beberapa poin sebagai berikut:
 <p>Bagian ini menjelaskan jika pengguna memilih menu Log in. Sistem akan meminta pengguna untuk memasukkan Username dan Password dari akun yang telah terdaftar.<br>
 Setelah itu sistem akan melakukan verifikasi akun dengan database berdasarkan Username dan Password yang dimasukkan pengguna.</p>
 
-
 <p>
 
  - Jika proses verifikasi Username dan Password pengguna telah terdaftar, maka program akan menampilkan Username dan Role atau Hak akses pengguna, dan kemudian akan menampilkan pilihan menu berdasarkan Role akun pengguna.
@@ -73,3 +72,17 @@ Sistem akan menampilkan pesan "Selamat tinggal" dan kemudian akan mengakhiri sem
 <img width="653" height="203" alt="Screenshot 2025-10-26 173350" src="https://github.com/user-attachments/assets/04b9e7f9-f7fa-460b-9c8a-34f1a6b37da9" />
 
 <p> Bagian ini menjelaskan jika pengguna memasukkan pilihan selain dari pilihan 1, 2, atau 3. Maka sistem akan menampilkan pesan "Menu tidak valid" dan akan mengembalikan pengguna ke tampilan Menu Utama.
+
+<br>
+<h2>B. Flowchart Menu User as Adminn</h2>
+<img width="991" height="2266" alt="Flowchart Menu Admin drawio" src="https://github.com/user-attachments/assets/14743863-1b26-4359-b499-1fb32c79c3e5" /> <br><br>
+
+<p>Bagian ini menjelaskan bagaimana alur program setelah pengguna melakukan Log in dan terverifikasi sebagai Admin. Sistem akan menampilkan pilihan menu dan hak akses yang dimiliki oleh Admin.<br>
+Berbagai pilihan menu yang dimiliki oleh akun Admin yaitu : <br>
+
+<b>1. Lihat semua produk.</b>
+<p>Pilihan ini akan mengarahkan sistem untuk mengambil data produk yang tersimpan pada database, yang kemudian akan ditampilkan dalam bentul Tabel kepada pengguna.</p>
+<img width="885" height="123" alt="Screenshot 2025-10-26 175359" src="https://github.com/user-attachments/assets/074e4144-0996-486d-9254-e7603918c695" />
+
+<b>2. Tambah Produk</b>
+<p>
