@@ -97,4 +97,10 @@ Setelah itu sistem akan menyimpan data tersebut ke database, setelah berhasil ma
 Untuk mengubah suatu produk, pengguna akan terlebih dahulu diminta untuk memasukkan "ID Produk" yang terdapat dalam database. Jika ID Produk yang diinput tersebut sesuai dengan ID Produk yang ada dalam database, Selanjutnya pengguna dapat mengubah detail dari produk dengan memasukkan "Nama Produk, Nama Brand, Tarif rental, dan Stok produk" baru. <br>
 Setelah menginput data produk, selanjutnya program akan menyimpan perubahan data tersebut ke database dan akan menampilkan pesan "Perubahan berhasil disimpan" lalu kemudian akan mengarahkan tampilan pengguna ke menu utama User Admin 
 
+<b>4. Hapus Produk</b> <br> <br>
+<img width="945" height="268" alt="Screenshot 2025-10-26 223126" src="https://github.com/user-attachments/assets/8c3e3c4b-c47f-4242-8449-832a3a62a499" />
+<p>Pilihan ke-4 ini menjelaskan alur program ketika pengguna ingin menghapus sebuah produk yang terdaftar dalam database</p> <br>
+
+<b>5. Lihat Semua Pengguna</b> <br> <br>
+<img width="848" height="144" alt="Screenshot 2025-10-26 223742" src="https://github.com/user-attachments/assets/09ce46bb-48e4-443e-9537-96f501b4eb2d" />
 
