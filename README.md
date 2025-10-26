@@ -35,7 +35,22 @@ Bagian-bagian program dijelaskan dalam beberapa poin sebagai berikut:
 <p> Jika pengguna selesai menggunakan aplikasi, pengguna dapat menginput pilihan "3" untuk keluar dan mengakhiri program. </p>
 
 
-<br><b>3. 
+
+
+
+
+<br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+""Draftt untuk menyimpan gambar secara online"" <br>
+- <img width="1233" height="183" alt="Screenshot 2025-10-26 170002" src="https://github.com/user-attachments/assets/69a36b93-bb2f-4a1f-971a-0b64109df8c3" />
+
 
 
 
