@@ -1,8 +1,7 @@
-#PA DDP SISTEM RENTAL KONSOL GAME 
-#Riaz Ramadhan Al Fattah
-#Arizky Saputra
-#Otniel Putra
-
+# PA DDP SISTEM RENTAL KONSOL GAME 
+# Riaz Ramadhan Al Fattah
+# Arizky Saputra
+# Otniel Putra
 
 import json
 import os
@@ -42,21 +41,101 @@ def next_id(prefix, existing_ids):
 
 def find_user(users, username):
     for u in users:
-        if u["username"] == username:
+        if u.get("username") == username:
             return u
     return None
-1
+
 def find_product(products, pid):
     for p in products:
-        if p["id"] == pid:
+        if p.get("id") == pid:
             return p
     return None
 
 def find_transaction(transactions, tid):
     for t in transactions:
-        if t["id"] == tid:
+        if t.get("id") == tid:
             return t
     return None
+
+# ===== Normalisasi ringan untuk transaksi lama (hindari KeyError 'id') =====
+def normalize_transactions(transactions, users, products):
+    """
+    Perbaiki entri transaksi lama yang tidak lengkap:
+    - tambahkan 'id' jika hilang
+    - konversi 'user' -> 'user_id' jika memungkinkan
+    - konversi 'product' atau 'product_name' -> 'product_id' jika memungkinkan
+    - normalisasi 'hours'/'hari' -> 'perjam'
+    Simpan file jika ada perubahan.
+    """
+    changed = False
+    existing_ids = {t.get("id") for t in transactions if t.get("id")}
+    # helper untuk buat id unik
+    def gen_tid():
+        n = 1
+        while True:
+            candidate = f"T-{n:04d}"
+            if candidate not in existing_ids:
+                existing_ids.add(candidate)
+                return candidate
+            n += 1
+
+    for t in transactions:
+        if not t.get("id"):
+            t["id"] = gen_tid()
+            changed = True
+
+        # user_id
+        if not t.get("user_id"):
+            # support legacy field 'user' (username)
+            uname = t.get("user")
+            if uname:
+                u = find_user(users, uname)
+                if u:
+                    t["user_id"] = u.get("id")
+                    changed = True
+                else:
+                    # tidak ketemu: tetapkan None untuk aman
+                    t["user_id"] = None
+                    changed = True
+
+        # product_id
+        if not t.get("product_id"):
+            pname = t.get("product") or t.get("product_name")
+            if pname:
+                p = next((x for x in products if x.get("name") == pname), None)
+                if p:
+                    t["product_id"] = p.get("id")
+                    changed = True
+                else:
+                    t["product_id"] = None
+                    changed = True
+
+        # perjam normalization
+        if "perjam" not in t:
+            if "hours" in t:
+                t["perjam"] = t.get("hours")
+                changed = True
+            elif "hari" in t:
+                t["perjam"] = t.get("hari")
+                changed = True
+            else:
+                t["perjam"] = t.get("perjam", 0)
+
+        # total
+        if "total" not in t:
+            t["total"] = t.get("total", 0)
+            changed = True
+
+        # method & created_at
+        if "method" not in t:
+            t["method"] = t.get("method", "unknown")
+            changed = True
+        if "created_at" not in t:
+            t["created_at"] = t.get("created_at", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            changed = True
+
+    if changed:
+        save_json(TRANSACTIONS_FILE, transactions)
 
 # -----------------------------
 # register & login
@@ -77,7 +156,7 @@ def register(users):
         print("Password tidak boleh kosong.")
         return None
 
-    existing_ids = [u["id"] for u in users]
+    existing_ids = [u.get("id") for u in users if u.get("id")]
     uid = next_id("U", existing_ids)
     new_user = {
         "id": uid,
@@ -97,7 +176,7 @@ def login(users):
     password = pwinput.pwinput("Password: ").strip()
 
     user = find_user(users, username)
-    if user and user["password"] == password:
+    if user and user.get("password") == password:
         print(f"Selamat datang, {user['username']}! Role: {user['role']}")
         return user
     print("Login gagal. Periksa username/password.")
@@ -108,23 +187,29 @@ def show_products_table(products):
     table = PrettyTable()
     table.field_names = ["ID", "Nama", "Brand", "Tarif/Perjam", "Stok"]
     for p in products:
-        table.add_row([p["id"], p["name"], p["brand"], p["perjam"], p["stock"]])
+        table.add_row([p.get("id"), p.get("name"), p.get("brand"), p.get("perjam"), p.get("stock")])
     print(table)
 
 def show_users_table(users):
     table = PrettyTable()
     table.field_names = ["ID", "Username", "Role", "Saldo"]
     for u in users:
-        table.add_row([u["id"], u["username"], u["role"], u["balance"]])
+        table.add_row([u.get("id"), u.get("username"), u.get("role"), u.get("balance")])
     print(table)
 
 def show_transactions_table(transactions):
+    # aman: gunakan .get sehingga tidak memunculkan KeyError jika ada field hilang
     table = PrettyTable()
-    table.field_names = ["ID", "User", "Produk", "Hari", "Total", "Tgl", "Metode"]
+    table.field_names = ["ID", "User", "Produk", "Jam", "Total", "Tgl", "Metode"]
     for t in transactions:
         table.add_row([
-            t["id"], t["user_id"], t["product_id"], t["perjam"],
-            t["total"], t["created_at"], t["method"]
+            t.get("id", "-"),
+            t.get("user_id", "-"),
+            t.get("product_id", "-"),
+            t.get("perjam", "-"),
+            t.get("total", "-"),
+            t.get("created_at", "-"),
+            t.get("method", "-")
         ])
     print(table)
 
@@ -146,7 +231,7 @@ def admin_create_product(products):
         print("Tarif/Stok harus angka.")
         return
 
-    existing_ids = [p["id"] for p in products]
+    existing_ids = [p.get("id") for p in products if p.get("id")]
     pid = next_id("P", existing_ids)
     new_p = {
         "id": pid, "name": name, "brand": brand,
@@ -166,9 +251,9 @@ def admin_update_product(products):
             print("Produk tidak ditemukan.")
             return
         print("Kosongkan input jika tidak ingin mengubah field tertentu.")
-        name = input(f"Nama ({p['name']}): ").strip()
-        brand = input(f"Brand ({p['brand']}): ").strip()
-        perjam_str = input(f"Tarif/Perjam ({p['perjam']}): ").strip()
+        name = input(f"Nama ({p.get('name')}): ").strip()
+        brand = input(f"Brand ({p.get('brand')}): ").strip()
+        perjam_str = input(f"Tarif/Perjam ({p.get('perjam')}): ").strip()
         if perjam_str:
             try:
                 perjam = int(perjam_str)
@@ -179,7 +264,7 @@ def admin_update_product(products):
             except ValueError:
                 print("Tarif harus berupa angka.")
                 return
-        stock_str = input(f"Stok ({p['stock']}): ").strip()
+        stock_str = input(f"Stok ({p.get('stock')}): ").strip()
         if stock_str:
             try:
                 stock = int(stock_str)
@@ -232,14 +317,14 @@ def admin_update_user(users):
     show_users_table(users)
     print("=== Ubah Pengguna ===")
     uid = input("Masukkan ID user: ").strip()
-    user = next((u for u in users if u["id"] == uid), None)
+    user = next((u for u in users if u.get("id") == uid), None)
     if not user:
         print("User tidak ditemukan.")
         return
     print("Kosongkan input jika tidak ingin mengubah field tertentu.")
-    username = input(f"Username ({user['username']}): ").strip()
-    role = input(f"Role ({user['role']}) [admin/user]: ").strip()
-    balance_str = input(f"Saldo ({user['balance']}): ").strip()
+    username = input(f"Username ({user.get('username')}): ").strip()
+    role = input(f"Role ({user.get('role')}) [admin/user]: ").strip()
+    balance_str = input(f"Saldo ({user.get('balance')}): ").strip()
 
     if username: user["username"] = username
     if role in ("admin", "user"): user["role"] = role
@@ -254,19 +339,19 @@ def admin_delete_user(users, transactions):
     show_users_table(users)
     print("=== Hapus Pengguna ===")
     uid = input("Masukkan ID user: ").strip()
-    user = next((u for u in users if u["id"] == uid), None)
+    user = next((u for u in users if u.get("id") == uid), None)
     if not user:
         print("User tidak ditemukan.")
         return
     # Cegah hapus admin terakhir (opsional)
-    admins = [u for u in users if u["role"] == "admin"]
-    if user["role"] == "admin" and len(admins) == 1:
+    admins = [u for u in users if u.get("role") == "admin"]
+    if user.get("role") == "admin" and len(admins) == 1:
         print("Tidak bisa menghapus satu-satunya admin.")
         return
     users.remove(user)
     save_json(USERS_FILE, users)
     # Opsional: hapus transaksi terkait user
-    transactions[:] = [t for t in transactions if t["user_id"] != uid]
+    transactions[:] = [t for t in transactions if t.get("user_id") != uid]
     save_json(TRANSACTIONS_FILE, transactions)
     print(f"User {uid} dihapus.")
 
@@ -286,7 +371,7 @@ def user_topup_balance(current_user, users):
     except ValueError:
         print("Nominal harus angka.")
         return
-    current_user["balance"] += amount
+    current_user["balance"] = current_user.get("balance", 0) + amount
     save_json(USERS_FILE, users)
     print(f"Top up berhasil. Saldo sekarang: {current_user['balance']}")
 
@@ -298,7 +383,7 @@ def user_rent_product(current_user, users, products, transactions):
     if not product:
         print("Produk tidak ditemukan.")
         return
-    if product["stock"] <= 0:
+    if product.get("stock", 0) <= 0:
         print("Stok habis.")
         return
 
@@ -314,9 +399,9 @@ def user_rent_product(current_user, users, products, transactions):
         print("Sewa per jam harus angka.")
         return
 
-    total = product["perjam"] * perjam
+    total = product.get("perjam", 0) * perjam
     print(f"Total biaya: {total}")
-    if current_user["balance"] < total:
+    if current_user.get("balance", 0) < total:
         print("Saldo tidak cukup. Silakan top up terlebih dahulu.")
         return
 
@@ -332,51 +417,42 @@ def user_rent_product(current_user, users, products, transactions):
         print("Penyewaan dibatalkan.")
         return
 
-    # Jika lolos dua kali konfirmasi, proses transaksi
-    current_user["balance"] -= total
-    product["stock"] -= 1
-    transactions.append({
-        "user": current_user["username"],
-        "product": product["name"],
-        "hours": perjam,
-        "total": total
-    })
-    print("Penyewaan berhasil dilakukan!")
+    # PROSES TRANSAKSI (perbaikan: hanya lakukan sekali, format transaksi konsisten)
+    current_user["balance"] = current_user.get("balance", 0) - total
+    product["stock"] = product.get("stock", 0) - 1
 
-
-    # Potong saldo, kurangi stok, simpan transaksi
-    current_user["balance"] -= total
-    product["stock"] -= 1
-    save_json(USERS_FILE, users)
-    save_json(PRODUCTS_FILE, products)
-
-    existing_tids = [t["id"] for t in transactions]
+    # buat id transaksi unik berdasarkan yang ada
+    existing_tids = [t.get("id") for t in transactions if t.get("id")]
     tid = next_id("T", existing_tids)
     trx = {
         "id": tid,
-        "user_id": current_user["id"],
-        "product_id": product["id"],
+        "user_id": current_user.get("id"),
+        "product_id": product.get("id"),
         "perjam": perjam,
         "total": total,
         "method": "E-money",
         "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
     transactions.append(trx)
+
+    # simpan perubahan
+    save_json(USERS_FILE, users)
+    save_json(PRODUCTS_FILE, products)
     save_json(TRANSACTIONS_FILE, transactions)
 
     print("== Invoice ===")
     table = PrettyTable()
     table.field_names = ["Invoice ID", "User", "Produk", "Hari", "Tarif/perjam", "Total", "Metode", "Tanggal"]
     table.add_row([
-        trx["id"], current_user["username"], product["name"], perjam,
-        product["perjam"], total, trx["method"], trx["created_at"]
+        trx["id"], current_user.get("username"), product.get("name"), perjam,
+        product.get("perjam"), total, trx["method"], trx["created_at"]
     ])
     print(table)
     print("Terima kasih! Sewa berhasil.")
 
 def user_view_transactions(current_user, transactions):
     print("=== Riwayat Transaksi Saya ===")
-    my_trx = [t for t in transactions if t["user_id"] == current_user["id"]]
+    my_trx = [t for t in transactions if t.get("user_id") == current_user.get("id")]
     if not my_trx:
         print("Belum ada transaksi.")
         return
@@ -386,7 +462,6 @@ def user_view_transactions(current_user, transactions):
 # Menu: Admin dan User
 def admin_menu(current_user, users, products, transactions):
     try:
-        print("Gabisa Keluar")
         while True:
             print("=== Menu Admin ===")
             print("1. Lihat semua produk")
@@ -432,7 +507,7 @@ def user_menu(current_user, users, products, transactions):
     try: 
         while True:
             print("=== Menu User ===")
-            print(f"Saldo: {current_user['balance']}")
+            print(f"Saldo: {current_user.get('balance', 0)}")
             print("1. Lihat produk")
             print("2. Top up saldo")
             print("3. Sewa produk (E-money)")
@@ -473,6 +548,10 @@ def main():
     users = load_json(USERS_FILE)
     products = load_json(PRODUCTS_FILE)
     transactions = load_json(TRANSACTIONS_FILE)
+
+    # Normalisasi ringan supaya entri transaksi lama tidak menyebabkan KeyError pada 'id'
+    normalize_transactions(transactions, users, products)
+
     try:
         while True:
             print("=== Sistem Rental Konsol Game ===")
@@ -484,7 +563,7 @@ def main():
             if choice == "1":
                 user = login(users)
                 if user:
-                    if user["role"] == "admin":
+                    if user.get("role") == "admin":
                         admin_menu(user, users, products, transactions)
                     else:
                         user_menu(user, users, products, transactions)
