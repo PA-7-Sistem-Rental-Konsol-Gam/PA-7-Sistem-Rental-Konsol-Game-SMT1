@@ -227,4 +227,10 @@ Jika ID produk tersebut terdaftar, maka pengguna dapat memasukkan Nama, Brand, T
 <b><p>6. Ubah pengguna</p></b> <br>
 <img width="536" height="379" alt="Screenshot 2025-10-27 025247" src="https://github.com/user-attachments/assets/4b289fc3-9425-4716-83df-522880af398e" />
 
-<p>Menu untuk mengubah data akun pengguna yang terdaftar. Pengguna akan dimina memasukkan ID akun user yang ingin diubah, Jika ID akun tersebut terdaftar, maka pengguna(Admin) bisa memasukkan Username, Role akun(Admin / User), dan jumlah saldo pada akun. Pengguna juga dapat mengosongkan kolom yang tidak ingin diubah dengan menekan langsung "Enter" pada tombol keyboard.</p>
+<p>Menu untuk mengubah data akun pengguna yang terdaftar. Pengguna akan dimina memasukkan ID akun user yang ingin diubah, Jika ID akun tersebut terdaftar, maka pengguna(Admin) bisa memasukkan Username, Role akun(Admin / User), dan jumlah saldo pada akun. Pengguna juga dapat mengosongkan kolom yang tidak ingin diubah dengan menekan langsung "Enter" pada tombol keyboard.</p> <br>
+
+<b><p>7. Hapus pengguna</p></b> <br>
+<img width="503" height="290" alt="Screenshot 2025-10-27 025831" src="https://github.com/user-attachments/assets/3ae81290-1b10-4a16-92a9-b9575f6748d9" />
+<p>Menu untuk menghapus akun user. Pengguna(Admin) dapat memasukkan ID akun yang terdaftar dalam sistem yang ingin dihapus dari database. Jika ID akun tersebut sebelumnya terdaftar, maka sistem akan menghapus data akun tersebut dari database.</p>
+
+<b><p>8. Lihat semua transaksi</p></b> <br>
