@@ -332,26 +332,14 @@ def user_rent_product(current_user, users, products, transactions):
         print("Penyewaan dibatalkan.")
         return
 
-    # Jika lolos dua kali konfirmasi, proses transaksi
+    # === Proses transaksi ===
     current_user["balance"] -= total
     product["stock"] -= 1
-    transactions.append({
-        "user": current_user["username"],
-        "product": product["name"],
-        "hours": perjam,
-        "total": total
-    })
-    print("Penyewaan berhasil dilakukan!")
 
+    # Buat ID transaksi baru
+    existing_ids = [t["id"] for t in transactions if "id" in t]
+    tid = next_id("T", existing_ids)
 
-    # Potong saldo, kurangi stok, simpan transaksi
-    current_user["balance"] -= total
-    product["stock"] -= 1
-    save_json(USERS_FILE, users)
-    save_json(PRODUCTS_FILE, products)
-
-    existing_tids = [t["id"] for t in transactions]
-    tid = next_id("T", existing_tids)
     trx = {
         "id": tid,
         "user_id": current_user["id"],
@@ -362,11 +350,16 @@ def user_rent_product(current_user, users, products, transactions):
         "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
     transactions.append(trx)
+
+    # Simpan perubahan
+    save_json(USERS_FILE, users)
+    save_json(PRODUCTS_FILE, products)
     save_json(TRANSACTIONS_FILE, transactions)
 
+    # Cetak invoice
     print("== Invoice ===")
     table = PrettyTable()
-    table.field_names = ["Invoice ID", "User", "Produk", "Hari", "Tarif/perjam", "Total", "Metode", "Tanggal"]
+    table.field_names = ["Invoice ID", "User", "Produk", "Jam", "Tarif/jam", "Total", "Metode", "Tanggal"]
     table.add_row([
         trx["id"], current_user["username"], product["name"], perjam,
         product["perjam"], total, trx["method"], trx["created_at"]
