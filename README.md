@@ -74,7 +74,7 @@ Sistem akan menampilkan pesan "Selamat tinggal" dan kemudian akan mengakhiri sem
 <p> Bagian ini menjelaskan jika pengguna memasukkan pilihan selain dari pilihan 1, 2, atau 3. Maka sistem akan menampilkan pesan "Menu tidak valid" dan akan mengembalikan pengguna ke tampilan Menu Utama.
 
 <br>
-<h2>B. Flowchart Menu User as Adminn</h2>
+<h2>B. Flowchart Menu User as Admin</h2>
 <img width="991" height="2266" alt="Flowchart Menu Admin drawio" src="https://github.com/user-attachments/assets/14743863-1b26-4359-b499-1fb32c79c3e5" /> <br><br>
 
 <p>Bagian ini menjelaskan bagaimana alur program setelah pengguna melakukan Log in dan terverifikasi sebagai Admin. Sistem akan menampilkan pilihan menu dan hak akses yang dimiliki oleh Admin.<br>
