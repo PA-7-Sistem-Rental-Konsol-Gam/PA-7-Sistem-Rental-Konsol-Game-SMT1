@@ -107,4 +107,11 @@ Setelah menginput data produk, selanjutnya program akan menyimpan perubahan data
 <p>Pilihan ini akan mengarahkan program untuk menampilkan daftar pengguna dalam bentuk tabel yang terdaftar dalam Database.</p> <br>
 
 <b>6. Ubah Pengguna</b> <br> <br>
+<img width="925" height="225" alt="Screenshot 2025-10-26 224849" src="https://github.com/user-attachments/assets/1ea5aaa6-9cdf-4284-b4d3-73c097d8583e" /> <br>
+
+<p>Pilihan ini digunakan untuk mengubah data dari akun user yang terdaftar di dalam database. Data yang dapat diubah adalah Username, Role akun(Admin/Customer User), dan Saldo Pengguna.</p> <br>
+
+<b>7. Hapus Pengguna</b> <br> <br>
+<img width="915" height="318" alt="Screenshot 2025-10-26 225818" src="https://github.com/user-attachments/assets/1579e739-8bed-48b7-9806-52a38cec87a1" />
+
 
