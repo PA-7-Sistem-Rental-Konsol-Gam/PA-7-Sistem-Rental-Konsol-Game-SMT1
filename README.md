@@ -212,9 +212,19 @@ Beberaoa pilihan menu yang dimiliki oleh akun Customer yaitu : <br>
 <img width="665" height="439" alt="Screenshot 2025-10-27 023756" src="https://github.com/user-attachments/assets/c2adaadb-7146-4186-b3ba-3fd9fcd4e0a1" />
 
 <p>Menu ini dapat digunakan untuk mengubah data dari produk yang sebelumnya telah tersimpan di dalam database. Sistem akan menampilkan daftar dari produk yang tersedia, kemudian pengguna akan diminta untuk memasukkan ID dari produk yang ingin diubah oleh pengguna. <br>
-Jika ID produk tersebut terdaftar, maka pengguna dapat memasukkan Nama, Brand, Tarif, atau Jumlah stok dari produk yang ingin diubah. pengguna juga dapat mengosongkan kolom jika ada bagian yang tidak ingin diubah dengan langsung menekan 'Enter' pada tombol Keyboard.</p>
+Jika ID produk tersebut terdaftar, maka pengguna dapat memasukkan Nama, Brand, Tarif, atau Jumlah stok dari produk yang ingin diubah. pengguna juga dapat mengosongkan kolom jika ada bagian yang tidak ingin diubah dengan langsung menekan 'Enter' pada tombol Keyboard.</p><br>
 
+<b><p>4. Hapus produk</p></b> <br>
+<img width="648" height="313" alt="Screenshot 2025-10-27 024548" src="https://github.com/user-attachments/assets/2bb66af9-1c0b-4cfb-b9b3-1a1c9c7e861f" />
 
+<p>Menu ini berfungsi untuk menghapus data produk dari database. Pengguna memasukkan ID dari produk yang ingin dihapus, dan kemudian sistem akan menghapus data produk tersebut dari database.</p><br>
 
+<b><p>5. Lihat semua pengguna</p></b> <br>
+<img width="377" height="249" alt="Screenshot 2025-10-27 024755" src="https://github.com/user-attachments/assets/561be141-c502-43a8-94ba-10300523ce7c" />
 
+<p>Pilihan ini akan menampilkan data dari semua akun pengguna yang terdaftar dalam sistem</p><br>
 
+<b><p>6. Ubah pengguna</p></b> <br>
+<img width="536" height="379" alt="Screenshot 2025-10-27 025247" src="https://github.com/user-attachments/assets/4b289fc3-9425-4716-83df-522880af398e" />
+
+<p>Menu untuk mengubah data akun pengguna yang terdaftar. Pengguna akan dimina memasukkan ID akun user yang ingin diubah, Jika ID akun tersebut terdaftar, maka pengguna(Admin) bisa memasukkan Username, Role akun(Admin / User), dan jumlah saldo pada akun. Pengguna juga dapat mengosongkan kolom yang tidak ingin diubah dengan menekan langsung "Enter" pada tombol keyboard.</p>
