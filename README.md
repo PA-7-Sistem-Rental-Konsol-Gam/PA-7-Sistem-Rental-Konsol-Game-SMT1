@@ -80,9 +80,12 @@ Sistem akan menampilkan pesan "Selamat tinggal" dan kemudian akan mengakhiri sem
 <p>Bagian ini menjelaskan bagaimana alur program setelah pengguna melakukan Log in dan terverifikasi sebagai Admin. Sistem akan menampilkan pilihan menu dan hak akses yang dimiliki oleh Admin.<br>
 Berbagai pilihan menu yang dimiliki oleh akun Admin yaitu : <br>
 
-<b>1. Lihat semua produk.</b>
+<b>1. Lihat semua produk.</b> <br>
 <p>Pilihan ini akan mengarahkan sistem untuk mengambil data produk yang tersimpan pada database, yang kemudian akan ditampilkan dalam bentul Tabel kepada pengguna.</p>
-<img width="885" height="123" alt="Screenshot 2025-10-26 175359" src="https://github.com/user-attachments/assets/074e4144-0996-486d-9254-e7603918c695" />
+<img width="885" height="123" alt="Screenshot 2025-10-26 175359" src="https://github.com/user-attachments/assets/074e4144-0996-486d-9254-e7603918c695" /> <br><br>
 
-<b>2. Tambah Produk</b>
-<p>
+<b>2. Tambah Produk</b> <br> <br>
+<img width="875" height="104" alt="Screenshot 2025-10-26 175814" src="https://github.com/user-attachments/assets/7ac7aaea-655b-4617-9775-59dcef0bc752" /> <br>
+
+<p>Bagian ini digunakan untuk menambah produk baru kedalam database. Pengguna akan diminta memasukkan Nama Produk, Nama Brand, Tarif Rental(dalam satuan jam), dan Jumlah Stok yang ada. <br>
+Setelah itu sistem akan menyimpan data tersebut ke database, setelah berhasil maka program akan memberikan pesan "Produk berhasil ditambahkan", Lalu pengguna akan diarahkan kembali ke Menu Admin.
