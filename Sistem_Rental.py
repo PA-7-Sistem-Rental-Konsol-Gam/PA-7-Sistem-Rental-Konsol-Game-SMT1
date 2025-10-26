@@ -332,13 +332,26 @@ def user_rent_product(current_user, users, products, transactions):
         print("Penyewaan dibatalkan.")
         return
 
-    # === Proses transaksi ===
+    # Jika lolos dua kali konfirmasi, proses transaksi
     current_user["balance"] -= total
     product["stock"] -= 1
+    transactions.append({
+        "user": current_user["username"],
+        "product": product["name"],
+        "hours": perjam,
+        "total": total
+    })
+    print("Penyewaan berhasil dilakukan!")
 
-    # Buat ID transaksi baru
-    existing_ids = [t["id"] for t in transactions if "id" in t]
-    tid = next_id("T", existing_ids)
+
+    # Potong saldo, kurangi stok, simpan transaksi
+    current_user["balance"] -= total
+    product["stock"] -= 1
+    save_json(USERS_FILE, users)
+    save_json(PRODUCTS_FILE, products)
+
+    existing_tids = [t["id"] for t in transactions if isinstance(t, dict) and "id" in t]
+    tid = next_id("T", existing_tids)
 
     trx = {
         "id": tid,
@@ -348,18 +361,14 @@ def user_rent_product(current_user, users, products, transactions):
         "total": total,
         "method": "E-money",
         "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    }
-    transactions.append(trx)
+}
 
-    # Simpan perubahan
-    save_json(USERS_FILE, users)
-    save_json(PRODUCTS_FILE, products)
+    transactions.append(trx)
     save_json(TRANSACTIONS_FILE, transactions)
 
-    # Cetak invoice
     print("== Invoice ===")
     table = PrettyTable()
-    table.field_names = ["Invoice ID", "User", "Produk", "Jam", "Tarif/jam", "Total", "Metode", "Tanggal"]
+    table.field_names = ["Invoice ID", "User", "Produk", "Hari", "Tarif/perjam", "Total", "Metode", "Tanggal"]
     table.add_row([
         trx["id"], current_user["username"], product["name"], perjam,
         product["perjam"], total, trx["method"], trx["created_at"]
@@ -379,7 +388,7 @@ def user_view_transactions(current_user, transactions):
 # Menu: Admin dan User
 def admin_menu(current_user, users, products, transactions):
     try:
-        print("Gabisa Keluar")
+        print("")
         while True:
             print("=== Menu Admin ===")
             print("1. Lihat semua produk")
@@ -499,5 +508,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
