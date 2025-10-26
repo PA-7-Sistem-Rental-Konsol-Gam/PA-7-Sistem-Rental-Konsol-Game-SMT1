@@ -75,7 +75,7 @@ Sistem akan menampilkan pesan "Selamat tinggal" dan kemudian akan mengakhiri sem
 
 <br>
 <h2>B. Flowchart Menu User as Admin</h2>
-<img width="991" height="2266" alt="Flowchart Menu Admin drawio" src="https://github.com/user-attachments/assets/14743863-1b26-4359-b499-1fb32c79c3e5" /> <br><br>
+<img width="1022" height="2266" alt="Flowchart Menu Admin drawio" src="https://github.com/user-attachments/assets/30060264-294a-4fd0-8542-ec70165f0c8f" /> <br><br>
 
 <p>Bagian ini menjelaskan bagaimana alur program setelah pengguna melakukan Log in dan terverifikasi sebagai Admin. Sistem akan menampilkan pilihan menu dan hak akses yang dimiliki oleh Admin.<br>
 Berbagai pilihan menu yang dimiliki oleh akun Admin yaitu : <br>
@@ -102,5 +102,9 @@ Setelah menginput data produk, selanjutnya program akan menyimpan perubahan data
 <p>Pilihan ke-4 ini menjelaskan alur program ketika pengguna ingin menghapus sebuah produk yang terdaftar dalam database</p> <br>
 
 <b>5. Lihat Semua Pengguna</b> <br> <br>
-<img width="848" height="144" alt="Screenshot 2025-10-26 223742" src="https://github.com/user-attachments/assets/09ce46bb-48e4-443e-9537-96f501b4eb2d" />
+<img width="848" height="144" alt="Screenshot 2025-10-26 223742" src="https://github.com/user-attachments/assets/09ce46bb-48e4-443e-9537-96f501b4eb2d" /> <br>
+
+<p>Pilihan ini akan mengarahkan program untuk menampilkan daftar pengguna dalam bentuk tabel yang terdaftar dalam Database.</p> <br>
+
+<b>6. Ubah Pengguna</b> <br> <br>
 
