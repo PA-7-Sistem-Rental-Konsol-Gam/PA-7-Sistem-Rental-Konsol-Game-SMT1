@@ -78,7 +78,7 @@ Sistem akan menampilkan pesan "Selamat tinggal" dan kemudian akan mengakhiri sem
 <img width="1022" height="2266" alt="Flowchart Menu Admin drawio" src="https://github.com/user-attachments/assets/30060264-294a-4fd0-8542-ec70165f0c8f" /> <br><br>
 
 <p>Bagian ini menjelaskan bagaimana alur program setelah pengguna melakukan Log in dan terverifikasi sebagai Admin. Sistem akan menampilkan pilihan menu dan hak akses yang dimiliki oleh Admin.<br>
-Berbagai pilihan menu yang dimiliki oleh akun Admin yaitu : <br>
+Beberapa pilihan menu yang dimiliki oleh akun Admin yaitu : <br>
 
 <b>1. Lihat semua produk.</b> <br>
 <p>Pilihan ini akan mengarahkan sistem untuk mengambil data produk yang tersimpan pada database, yang kemudian akan ditampilkan dalam bentul Tabel kepada pengguna.</p>
@@ -124,4 +124,47 @@ Setelah menginput data produk, selanjutnya program akan menyimpan perubahan data
 <b>9. Log Out</b> <br> <br>
 <img width="751" height="117" alt="Screenshot 2025-10-26 230757" src="https://github.com/user-attachments/assets/438d5e9c-fa62-4f92-b494-869d32894b84" />
 
-<p>Pilihan ini digunakan jika user ingin keluar dari akun saat ini. Sistem akan mengeluarkan pengguna dari akun saat ini dan akan mengarahkan pengguna kembali ke Menu Utama </p>
+<p>Pilihan ini digunakan jika user ingin keluar dari akun saat ini. Sistem akan mengeluarkan pengguna dari akun saat ini dan akan mengarahkan pengguna kembali ke Menu Utama </p> <br>
+
+<p>
+- Jika Pengguna memasukkan input selain dari pilihan yang tersedia (1 - 9), maka sistem hanya akan menampilkan pesan "Pilihan tidak valid" dan mengembalikan pengguna ke tampilam menu awal.
+
+
+<h2>C. Flowchart Menu Customer</h2>
+<img width="1786" height="1286" alt="Flowchart Menu User Customers drawio" src="https://github.com/user-attachments/assets/62c6026b-fc20-4b27-9a42-574aedd0247d" />
+<br><br>
+
+<p>Bagian ini menjelaskan bagaimana alur program setelah pengguna melakukan Log in dan terverifikasi sebagai User Customer. Sistem akan menampilkan pilihan menu dan hak akses yang dimiliki oleh Customers.</p>
+
+Beberaoa pilihan menu yang dimiliki oleh akun Customer yaitu : <br>
+
+<b>1. Lihat Produk </b>
+<img width="821" height="136" alt="Screenshot 2025-10-27 013205" src="https://github.com/user-attachments/assets/8702f808-b88e-4e14-a945-d4e8b2e1d6ec" />
+
+<p>Pilihan ini berfungsi untuk menampilkan list data produk yang tersedia dalam sistem Rental Konsol Game</p>
+
+
+<b>2. Top Up Saldo</b>
+<img width="1272" height="188" alt="Screenshot 2025-10-27 013548" src="https://github.com/user-attachments/assets/7002fb4d-e477-47d4-ba05-abb8a20c90f1" />
+
+<p>Pilihan ini dapat digunakan user untuk melakukan pengisian saldo E-Money yang dapat digunakan untuk melakukan penyewaan produk Konsol Game. </p>
+
+
+<b>3. Sewa Produk</b>
+<img width="1618" height="235" alt="Screenshot 2025-10-27 013938" src="https://github.com/user-attachments/assets/dfb6233a-db82-445c-b6a9-7741aba76665" />
+
+<p>Pilihan ini digunakan untuk melakukan transaksi atau penyewaan konsol game. Pengguna akan diminta untuk memasukkan ID produk dan durasi rental dari produk yang ingin disewa, lalu selanjutnya akan masuk ke proses pembayaran biaya sewa konsol game nya.</p>
+
+
+<b>4. Lihat Riwayat Transaksi</b>
+<img width="762" height="129" alt="Screenshot 2025-10-27 014502" src="https://github.com/user-attachments/assets/6ec4446e-e2cc-4d3b-a549-4317a1d7bfc3" />
+
+<p>Pilihan ini akan menampilkan kepada pengguna tentang riwayat transaksi yang pernah dilakukan dalam akun pengguna tersebut.</p>
+
+
+<b>5. Log Out</b><br>
+<img width="355" height="251" alt="Screenshot 2025-10-27 014733" src="https://github.com/user-attachments/assets/dafcafb5-9c28-4d4d-bb0b-e83b39250e8f" />
+
+<p>Pilihan ini digunakan jika pengguna ingin keluar dari akun saat ini, kemudian program akan mengarahkan pengguna kembali ke menu utama. <br>
+
+- Jika pengguna memasukkan input menu selain dari menu yang tersedia (1 - 5), maka sistem hanya akan menampilkan pesan "Pilihan menu tidak valid", dan kemudian akan mengembalikan pengguna ke tampilan menu Customer</p>
