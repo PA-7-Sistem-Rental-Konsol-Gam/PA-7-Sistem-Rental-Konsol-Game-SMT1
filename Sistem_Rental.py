@@ -350,9 +350,8 @@ def user_rent_product(current_user, users, products, transactions):
     save_json(USERS_FILE, users)
     save_json(PRODUCTS_FILE, products)
 
-    existing_tids = [t["id"] for t in transactions if isinstance(t, dict) and "id" in t]
+    existing_tids = [t["id"] for t in transactions]
     tid = next_id("T", existing_tids)
-
     trx = {
         "id": tid,
         "user_id": current_user["id"],
@@ -361,8 +360,7 @@ def user_rent_product(current_user, users, products, transactions):
         "total": total,
         "method": "E-money",
         "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-}
-
+    }
     transactions.append(trx)
     save_json(TRANSACTIONS_FILE, transactions)
 
