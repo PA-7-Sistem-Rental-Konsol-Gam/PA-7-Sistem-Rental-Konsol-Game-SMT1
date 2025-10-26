@@ -167,4 +167,28 @@ Beberaoa pilihan menu yang dimiliki oleh akun Customer yaitu : <br>
 
 <p>Pilihan ini digunakan jika pengguna ingin keluar dari akun saat ini, kemudian program akan mengarahkan pengguna kembali ke menu utama. <br>
 
-- Jika pengguna memasukkan input menu selain dari menu yang tersedia (1 - 5), maka sistem hanya akan menampilkan pesan "Pilihan menu tidak valid", dan kemudian akan mengembalikan pengguna ke tampilan menu Customer</p>
+- Jika pengguna memasukkan input menu selain dari menu yang tersedia (1 - 5), maka sistem hanya akan menampilkan pesan "Pilihan menu tidak valid", dan kemudian akan mengembalikan pengguna ke tampilan menu Customer</p><br>
+
+# Panduan Penggunaan Program
+<h2>A. Menu Utama</h2><br>
+<img width="329" height="122" alt="Screenshot 2025-10-27 020037" src="https://github.com/user-attachments/assets/3f0266b3-8b26-4433-a94c-e90ee3d709fd" />
+
+<p>Pada tampilan menu utama setelah program dijalankan, sistem akan menampilkan 3 pilihan menu yang dapat digunakan oleh pengguna. Masing-masing menu memiliki kegunaannya masing-masing yaitu :</p><br>
+
+<b><p>1. Log in</p></b>
+<br>
+<img width="339" height="129" alt="Screenshot 2025-10-27 020649" src="https://github.com/user-attachments/assets/4c31fa10-1575-4b5f-92d5-777c2594d7f1" /> <br>
+
+<p>Pilihan menu ini digunakan untuk masuk ke akun pengguna yang sebelumnya telah terdaftar dalam database. Jenis akun pengguna terbagi menjadi 2 role, yaitu akun Admin dan akun Customer, yang masing-masing memiliki hak akses nya masing-masing dalam program</p>
+
+
+
+
+
+
+
+
+
+
+
+
