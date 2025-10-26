@@ -1,6 +1,6 @@
 # PROJECT AKHIR KELOMPOK 7 DDP
 
-Sistem Rental Konsol Game
+<b> Sistem Rental Konsol Game</b>
 
 # Anggota Kelompok
 
@@ -35,22 +35,41 @@ Bagian-bagian program dijelaskan dalam beberapa poin sebagai berikut:
 <p> Jika pengguna selesai menggunakan aplikasi, pengguna dapat menginput pilihan "3" untuk keluar dan mengakhiri program. </p>
 
 
+<br><b>3. Input Decision - Conditial Statement berdasarkan pilihan User</b>
+<br>
+<p>Setelah pengguna memasukkan pilihan menu yang diinginkan, selanjutnya sistem akan menentukan alur program selanjutnya yang diperlukan sesuai kebutuhan pengguna</p>
+
+<br>
+    <p><b>- Pilihan 1 : Log in<br><br></b>
+    <img width="1233" height="183" alt="Screenshot 2025-10-26 170002" src="https://github.com/user-attachments/assets/f3bd0ee0-655c-4beb-95e4-1e4ee7a82482" /> <br>
+<p>Bagian ini menjelaskan jika pengguna memilih menu Log in. Sistem akan meminta pengguna untuk memasukkan Username dan Password dari akun yang telah terdaftar.<br>
+Setelah itu sistem akan melakukan verifikasi akun dengan database berdasarkan Username dan Password yang dimasukkan pengguna.</p>
 
 
+<p>
 
+ - Jika proses verifikasi Username dan Password pengguna telah terdaftar, maka program akan menampilkan Username dan Role atau Hak akses pengguna, dan kemudian akan menampilkan pilihan menu berdasarkan Role akun pengguna.
 
-<br><br><br><br><br><br>
+ - Sebaliknya jika proses verifikasi Username dan Password pengguna belum terdaftar, maka program akan menampilkan pesan "Akun tidak terdaftar", dan program akan mengembalikan pengguna ke menu utama 
+ 
+ </p>
 
+<br>
+    <p><b>- Pilihan 2 : Registrasi<br><br></b>
+    <img width="1754" height="251" alt="Screenshot 2025-10-26 172641" src="https://github.com/user-attachments/assets/8ad07504-5fdc-4c62-b430-035e403fdb99" /> <br>
 
+<p>Bagian ini menjelaskan jika pengguna memilih menu Registrasi akun baru.<br>Pengguna akan diminta untuk memasukkan Username dan Password untuk membuat akun baru. <br>
+Setelah itu program akan menyimpan data Username dan Password tersebut ke database dan kemudian menampilkan Username, ID user, dan Role dari akun yang telah dibuat oleh pengguna.
+</p>
+<br>
+    <p><b>- Pilihan 3 : Keluar <br><br></b>
+    <img width="544" height="131" alt="Screenshot 2025-10-26 173118" src="https://github.com/user-attachments/assets/f6cca0d0-8f46-4a55-9c1a-0142589058dd" /> <br>
 
+<p>Bagian ini menjelaskan jika pengguna memilih menu Keluar. <br>
+Sistem akan menampilkan pesan "Selamat tinggal" dan kemudian akan mengakhiri semua program yang berjalan.
+<br>
 
+ <p><b>- Pilihan Tidak Valid <br><br></b>
+<img width="653" height="203" alt="Screenshot 2025-10-26 173350" src="https://github.com/user-attachments/assets/04b9e7f9-f7fa-460b-9c8a-34f1a6b37da9" />
 
-
-
-
-""Draftt untuk menyimpan gambar secara online"" <br>
-- <img width="1233" height="183" alt="Screenshot 2025-10-26 170002" src="https://github.com/user-attachments/assets/69a36b93-bb2f-4a1f-971a-0b64109df8c3" />
-
-
-
-
+<p> Bagian ini menjelaskan jika pengguna memasukkan pilihan selain dari pilihan 1, 2, atau 3. Maka sistem akan menampilkan pesan "Menu tidak valid" dan akan mengembalikan pengguna ke tampilan Menu Utama.
