@@ -167,7 +167,7 @@ Beberaoa pilihan menu yang dimiliki oleh akun Customer yaitu : <br>
 
 <p>Pilihan ini digunakan jika pengguna ingin keluar dari akun saat ini, kemudian program akan mengarahkan pengguna kembali ke menu utama. <br>
 
-- Jika pengguna memasukkan input menu selain dari menu yang tersedia (1 - 5), maka sistem hanya akan menampilkan pesan "Pilihan menu tidak valid", dan kemudian akan mengembalikan pengguna ke tampilan menu Customer</p><br>
+- Jika pengguna memasukkan input menu selain dari menu yang tersedia (1 - 5), maka sistem hanya akan menampilkan pesan "Pilihan menu tidak valid", dan kemudian akan mengembalikan pengguna ke tampilan menu Customer.</p><br>
 
 # Panduan Penggunaan Program
 <h2>A. Menu Utama</h2><br>
@@ -177,16 +177,42 @@ Beberaoa pilihan menu yang dimiliki oleh akun Customer yaitu : <br>
 
 <b><p>1. Log in</p></b>
 <br>
-<img width="339" height="129" alt="Screenshot 2025-10-27 020649" src="https://github.com/user-attachments/assets/4c31fa10-1575-4b5f-92d5-777c2594d7f1" /> <br>
+<img width="339" height="129" alt="Screenshot 2025-10-27 020649" src="https://github.com/user-attachments/assets/4c31fa10-1575-4b5f-92d5-777c2594d7f1" />
 
-<p>Pilihan menu ini digunakan untuk masuk ke akun pengguna yang sebelumnya telah terdaftar dalam database. Jenis akun pengguna terbagi menjadi 2 role, yaitu akun Admin dan akun Customer, yang masing-masing memiliki hak akses nya masing-masing dalam program</p>
+<p>Pilihan menu ini digunakan untuk masuk ke akun pengguna yang sebelumnya telah terdaftar dalam database.Pengguna harus memasukkan Username dan Password yang sebelumnya telah terdaftar dalam sistem. Jenis akun pengguna terbagi menjadi 2 role, yaitu akun Admin dan akun Customer, yang masing-masing memiliki hak akses nya masing-masing dalam program.</p><br>
+
+<b><p>2. Registrasi</p></b>
+<br>
+<img width="418" height="138" alt="Screenshot 2025-10-27 021130" src="https://github.com/user-attachments/assets/c7fbbc04-89b4-4edf-9417-275fac9c417c" />
+
+<p>Pilihan menu ini dapat digunakan jika pengguna ingin membuat akun baru sebelum masuk untuk menggunakan program. Pengguna akan diminta untuk memasukkan Username dan Password baru, yang nantinya akan diperlukan untuk melakukan Log in kedalam akun saat akan menggunakan program. </p><br>
+
+<b><p>3. Keluar</p></b> <br>
+<img width="333" height="154" alt="Screenshot 2025-10-27 021622" src="https://github.com/user-attachments/assets/a34f36c8-bd53-48f4-9265-65568f42fe74" />
+
+<p>Pilihan ini digunakan jika pengguna ingin keluar dan mengakhiri semua program yang sedang berjalan. Sistem akan menampilkan pesan "Sampai Jumpa" dan kemudian mengakhiri program.</p>
 
 
+<h2>B. Menu User - Admin</h2><br>
+<img width="361" height="361" alt="Screenshot 2025-10-27 022146" src="https://github.com/user-attachments/assets/3e0e71cf-8e01-40d6-bf94-09bbb8d54c0b" />
 
+<p>Menu User - Admin adalah tampilan menu dan hak akses yang dimiliki oleh akun yang diverifikasi oleh sistem sebagai akun Admin. Pengguna dapat memilih untuk menggunakan menu yang tersedia dengan menginput pilihan dengan mengetik salah satu dari angka 1-9. Akun Admin memiliki berbagai piihan menu yaitu :</p> <br>
 
+<b><p>1. Lihat semua produk</p></b> <br>
+<img width="626" height="252" alt="Screenshot 2025-10-27 022900" src="https://github.com/user-attachments/assets/1b4455c0-a79a-4a74-ac29-21f04487f241" />
 
+<p>Menu ini berfungsi untuk menampikan semua daftar produk yang ada di dalam program.</p><br>
 
+<b><p>2. Tambah produk</p></b> <br>
+<img width="346" height="162" alt="Screenshot 2025-10-27 023315" src="https://github.com/user-attachments/assets/6c1d090e-221f-4068-a714-dd47f99319b2" />
 
+<p>Menu ini berfungsi untuk menambah produk baru kedalam program. Pengguna akan diminta untuk memasukkan Nama, Brand, Tarif, dan Stok produk yang ingin ditambahkan oleh pengguna. </p><br>
+
+<b><p>3. Ubah produk</p></b> <br>
+<img width="665" height="439" alt="Screenshot 2025-10-27 023756" src="https://github.com/user-attachments/assets/c2adaadb-7146-4186-b3ba-3fd9fcd4e0a1" />
+
+<p>Menu ini dapat digunakan untuk mengubah data dari produk yang sebelumnya telah tersimpan di dalam database. Sistem akan menampilkan daftar dari produk yang tersedia, kemudian pengguna akan diminta untuk memasukkan ID dari produk yang ingin diubah oleh pengguna. <br>
+Jika ID produk tersebut terdaftar, maka pengguna dapat memasukkan Nama, Brand, Tarif, atau Jumlah stok dari produk yang ingin diubah. pengguna juga dapat mengosongkan kolom jika ada bagian yang tidak ingin diubah dengan langsung menekan 'Enter' pada tombol Keyboard.</p>
 
 
 
