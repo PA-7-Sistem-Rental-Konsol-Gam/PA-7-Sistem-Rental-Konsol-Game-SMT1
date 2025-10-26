@@ -234,3 +234,44 @@ Jika ID produk tersebut terdaftar, maka pengguna dapat memasukkan Nama, Brand, T
 <p>Menu untuk menghapus akun user. Pengguna(Admin) dapat memasukkan ID akun yang terdaftar dalam sistem yang ingin dihapus dari database. Jika ID akun tersebut sebelumnya terdaftar, maka sistem akan menghapus data akun tersebut dari database.</p>
 
 <b><p>8. Lihat semua transaksi</p></b> <br>
+<img width="731" height="169" alt="Screenshot 2025-10-27 040206" src="https://github.com/user-attachments/assets/88899c37-e62d-46d7-ab4a-9f4c7eaf3e35" />
+
+<p>Menu ini berfungsi untuk menampilkan semua riwayat transaksi yang terdaftar oleh sistem</p><br>
+
+<b><p>9. Log Out</p></b> <br>
+<img width="331" height="155" alt="Screenshot 2025-10-27 041005" src="https://github.com/user-attachments/assets/76a9caa5-3d9f-4389-9bd3-50b24bbf3908" />
+
+<p>Pilihan untuk keluar dari akun. Sistem akan mengarahkan pengguna kembali ke menu utama untuk memilih salah satu dari menu Log in, Registrasi, Atau Keluar</p><br>
+
+
+<h2><b>C. Menu User - Customer</b></h2><br>
+<img width="315" height="292" alt="Screenshot 2025-10-27 041404" src="https://github.com/user-attachments/assets/b9dfde17-f681-4af1-86b6-ed32ca51da87" />
+
+<p>Menu User - Admin adalah tampilan menu dan hak akses yang dimiliki oleh akun yang diverifikasi oleh sistem sebagai akun Customer Pengguna dapat memilih untuk menggunakan menu yang tersedia dengan menginput pilihan dengan mengetik salah satu dari angka 1-5. Akun Customer memiliki berbagai piihan menu yaitu :</p> <br>
+
+<b><p>1. Lihat Produk</p></b> <br>
+<img width="622" height="234" alt="Screenshot 2025-10-27 041707" src="https://github.com/user-attachments/assets/2ec92fb0-0802-45a4-87ed-cfae22c388c6" />
+
+<p>Menu ini berfungsi untuk menampikan semua daftar produk yang ada di dalam program.</p><br>
+
+<b><p>2. Top up Saldo</p></b> <br>
+<img width="378" height="99" alt="Screenshot 2025-10-27 041823" src="https://github.com/user-attachments/assets/bc64f3a9-fca3-4686-b7bf-ab8ab82eb946" />
+
+<p>Menu ini digunakan untuk melakukan pengisian saldo di akun customer. Pengguna memasukkan nominal saldo yang ingin diisi. Setelah pengguna melakukan pembayaran, maka saldo akan bertambah dan disimpan ke dalam database</p><br>
+
+<b><p>3. Sewa Produk</p></b> <br>
+<img width="708" height="487" alt="Screenshot 2025-10-27 042404" src="https://github.com/user-attachments/assets/5a028449-1f0b-4a4a-8c3d-c50e981031c2" />
+
+<p>Menu ini berfungsi untuk melakukan rental konsol game. Pengguna akan diminta untuk menginput ID produk yang ingin disewa dan durasi penyewaan. Setelah itu sistem akan menampilkan total biaya yang harus dibayarkan pengguna. Program akan meminta konfirmasi pembelian kepada pengguna sebelum menyelesaikan penyewaan. Jika pengguna setuju, ketik "ya" pada kolom input, dan program akan mengkonfirmasi penyewaan tersebut ke database. Sistem juga akan menampilkan invoice penyewaan konsol game tersebut.</p>
+
+<b><p>4. Lihat transaksi saya</p></b> <br>
+<img width="387" height="351" alt="Screenshot 2025-10-27 042907" src="https://github.com/user-attachments/assets/25ddb8f3-b43f-4918-9fbe-9ea01e84876b" />
+
+<p>Menu ini berfungsi untuk menampilkan semua riwayat transaksi yang pernah dilakukan pada aku Customers</p><br>
+
+<b><p>5. Log Out</p></b> <br>
+<img width="333" height="158" alt="Screenshot 2025-10-27 043027" src="https://github.com/user-attachments/assets/6a17997b-87d1-44ff-93cb-ec408724c1b0" />
+
+<p><p>Pilihan untuk keluar dari akun. Sistem akan mengarahkan pengguna kembali ke menu utama untuk memilih salah satu dari menu Log in, Registrasi, Atau Keluar</p><br></p>
+
+
