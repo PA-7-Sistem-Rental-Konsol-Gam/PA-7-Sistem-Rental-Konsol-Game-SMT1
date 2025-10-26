@@ -114,4 +114,14 @@ Setelah menginput data produk, selanjutnya program akan menyimpan perubahan data
 <b>7. Hapus Pengguna</b> <br> <br>
 <img width="915" height="318" alt="Screenshot 2025-10-26 225818" src="https://github.com/user-attachments/assets/1579e739-8bed-48b7-9806-52a38cec87a1" />
 
+<p>Pilihan ini berfungsi untuk menghapus akun pengguna yang sebelumnya telah terdaftar di Database. Pengguna(Admin) menginputkan IDD User yang ingin dihapus, dan kemudian sistem akan menghapus data user tersebut dari database</p> <br>
 
+<b>8. Lihat Semua Transaksi</b> <br> <br>
+<img width="870" height="147" alt="Screenshot 2025-10-26 230448" src="https://github.com/user-attachments/assets/e5f4823d-7103-4c25-91c5-5b721a8218f0" />
+
+<p>Pilihan ini berfungsi untuk menampilkan semua riwayat transaksi yang terjadi dan disimpan di dalam database.</p>
+
+<b>9. Log Out</b> <br> <br>
+<img width="751" height="117" alt="Screenshot 2025-10-26 230757" src="https://github.com/user-attachments/assets/438d5e9c-fa62-4f92-b494-869d32894b84" />
+
+<p>Pilihan ini digunakan jika user ingin keluar dari akun saat ini. Sistem akan mengeluarkan pengguna dari akun saat ini dan akan mengarahkan pengguna kembali ke Menu Utama </p>
