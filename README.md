@@ -10,7 +10,7 @@ Sistem Rental Konsol Game
 
 # Flowchart Program
 <h2>A. Flowchart Menu Utama</h2>
-<img width="1191" height="891" alt="FLOWCHART PA - Main Menu drawio" src="https://github.com/user-attachments/assets/3fed8be4-89e6-4876-abda-40496f1f10eb" />
+<img width="1191" height="891" alt="Flowchart Menu Utama drawio" src="https://github.com/user-attachments/assets/de9df609-3338-4c64-8396-11f303ef28ae" />
 <p style="text-align: center;">Gambar 1. Flowchart Menu Utama</p>
 
 <br>
