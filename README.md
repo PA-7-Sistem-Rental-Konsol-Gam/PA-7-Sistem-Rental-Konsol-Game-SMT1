@@ -79,4 +79,8 @@ Sistem akan menampilkan pesan "Selamat tinggal" dan kemudian akan mengakhiri sem
 
 <p>Bagian ini menjelaskan bagaimana alur program setelah pengguna melakukan Log in dan terverifikasi sebagai Admin. Sistem akan menampilkan pilihan menu dan hak akses yang dimiliki oleh Admin.<br>
 
+<h2>C. Penjelasan Output</h2>
+
+<img width="326" height="109" alt="image" src="https://github.com/user-attachments/assets/b97b4c71-a335-4e63-83d4-3f24269bdc0f" />
+</P> Menu Login dan Registrasi  <br>
 
